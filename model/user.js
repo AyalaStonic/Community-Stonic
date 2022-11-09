@@ -51,3 +51,30 @@ var UsersSchema = new Schema({
     }]
 
 });
+
+UsersSchema.methods = {
+    checkPassword: function (inputPassword) {
+        return bcrypt.compareSync(inputPassword, this.password)
+    },
+    hashPassword: plainTextPassword => {
+        return bcrypt.hashSync(plainTextPassword, 10)
+    }
+}
+
+UsersSchema.pre('save', function (next) {
+    if (!this.password) {
+        console.log('models/user.js =======NO PASSWORD PROVIDED=======')
+        next()
+    } else {
+        console.log('models/user.js hashPassword in pre save');
+        this.password = this.hashPassword(this.password)
+        next()
+    }
+})
+
+
+// This creates our model from the above schema, using mongoose's model method
+//  this article is a Collection called "Users", defined by UsersSchema
+var Users = mongoose.model("Users", UsersSchema);
+
+module.exports = Users;
