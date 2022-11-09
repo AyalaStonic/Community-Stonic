@@ -125,3 +125,18 @@ router.put("/event/:id", parser.single("image"), function (req, res) {
 // deleting an existing event
 router.delete("/event/:id", parser.single("image"), function (req, res) {
     let id = req.params.id;
+    
+    db.Events.findByIdAndDelete(id)
+    .then(event => {
+        cloudinary.v2.uploader.destroy(event.image.id, (err, res) => {
+            if (err) console.log(err);
+            console.log("This is the response:" + res);
+        });
+        db.Users.findByIdAndUpdate(req.body.userID,
+            { $pullAll: { events: [id] } })
+            .then(response => {
+                res.json(`${id} has been deleted`);
+            })
+    })
+    .catch(err => res.status(422).json(err));
+});
