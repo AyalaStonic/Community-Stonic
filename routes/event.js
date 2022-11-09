@@ -84,3 +84,16 @@ router.put("/event/:id", parser.single("image"), function (req, res) {
             // stores current event image id to use for deletion
             const id = event.image.id;
             let image = {};
+
+            // if a new image is being uploaded to an event, set the image object properties to the new image
+            if (req.file) {
+                console.log(req.file);
+                image.url = req.file.url;
+                image.id = req.file.public_id;
+                // takes the old stored image id and deletes it from cloudinary storage
+                if (id) {
+                    cloudinary.v2.uploader.destroy(id, (err, res) => {
+                        if (err) console.log(err);
+                        console.log("This is the response:" + res)
+                    });
+                }
