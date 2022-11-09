@@ -39,3 +39,20 @@ router.post("/event", parser.single("image"), function (req, res) {
     let newEvent = {};
     let image = {};
 
+
+    if (req.file) {
+        image.url = req.file.url;
+        image.id = req.file.public_id;
+    } else {
+        image = req.body.image;
+    }
+
+    newEvent.name = req.body.name;
+    newEvent.address = req.body.address;
+    // ** NEED TO MAKE SURE DATE is ENTERED AS "2020-02-04"
+    newEvent.date = req.body.date;
+    // ** NEED TO MAKE SURE TIME IS ENTERED AS "14:00"
+    newEvent.time = req.body.time;
+    newEvent.description = req.body.description
+    newEvent.organizer = req.body.organizer;
+    newEvent.image = image;
