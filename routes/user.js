@@ -91,3 +91,33 @@ router.put("/user/:id", parser.single("image"), (req, res) => {
                         if(err) console.log(err);
                         console.log("This is the response:" + res)
                     });
+
+                }
+                // if user is not uploading a new image then set new image object to the current image object
+            } else {
+                image = user.image;
+                console.log(image);
+            }
+            db.Users.findByIdAndUpdate(user._id, {
+                // users not allowed to change their username
+                // so update all fields except username
+                $set: {
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    email: req.body.email,
+                    password: req.body.password,
+                    image: image
+                }
+            }, { new: true })
+                .then(updatedUser => res.json(updatedUser))
+        })
+        .catch(err => res.json(err));
+});
+
+// get route to get all events a user is attending or organizing
+router.get("/user/:id/myevents", (req, res) => {
+    db.Users.find({ _id: req.params.id })
+        .populate("events")
+        .then(user => res.json(user))
+        .catch(err => res.json(err))
+});
