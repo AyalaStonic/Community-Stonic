@@ -33,3 +33,9 @@ router.get("/event/:id", function (req, res) {
         });
 });
 
+// creating a new event
+router.post("/event", parser.single("image"), function (req, res) {
+    console.log("event POST request received");
+    let newEvent = {};
+    let image = {};
+
