@@ -19,3 +19,17 @@ router.get("/event", function (req, res) {
         }
     });
 });
+
+
+// route for getting event information to display on event page
+router.get("/event/:id", function (req, res) {
+    let id = req.params.id
+    db.Events.findById(id)
+        .populate("attendees")
+        .then((response) => {
+            let timeToEvent = Moment(`${response.date} ${response.time}`).fromNow();
+            // the response should now have timeToEvent, which we can display as how long until this event
+            res.json({ fromDB: response, time: timeToEvent });
+        });
+});
+
