@@ -125,7 +125,7 @@ router.put("/event/:id", parser.single("image"), function (req, res) {
 // deleting an existing event
 router.delete("/event/:id", parser.single("image"), function (req, res) {
     let id = req.params.id;
-    
+
     db.Events.findByIdAndDelete(id)
     .then(event => {
         cloudinary.v2.uploader.destroy(event.image.id, (err, res) => {
@@ -140,3 +140,7 @@ router.delete("/event/:id", parser.single("image"), function (req, res) {
     })
     .catch(err => res.status(422).json(err));
 });
+
+// adding a user to an existing event via Attendees array field in Mongodb
+router.put("/signup/:id", function (req, res) {
+    let id = req.params.id;
