@@ -97,3 +97,7 @@ router.put("/event/:id", parser.single("image"), function (req, res) {
                         console.log("This is the response:" + res)
                     });
                 }
+                // if a new image is not being uploaded then set new image object to the current image object
+            } else {
+                image = event.image;
+                console.log(image);
