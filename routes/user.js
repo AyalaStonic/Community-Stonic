@@ -30,3 +30,5 @@ router.post("/user", parser.single("image"), (req, res) => {
     newUser.password = req.body.password;
     newUser.email = req.body.email;
     newUser.image = image;
+
+});
