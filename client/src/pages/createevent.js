@@ -67,3 +67,24 @@ class CreateEvent extends React.Component {
             this.setState({username: "", loggedIn: "false", userID: ""});
         }
     }
+
+    render() {
+        return (
+            <div>
+                <Nav
+                    loggedIn={this.state.loggedIn}
+                    manageLogin={this.manageLogin}
+                    href={this.state.href}>
+                </Nav>
+                <CreateEventForm
+                    handleInputChange={this.handleInputChange}
+                    
+                    handleFormSubmit={this.handleFormSubmit}
+                    setImage={this.setImage}>
+                </CreateEventForm>
+            </div>
+        )
+    }
+}
+
+export default CreateEvent;
