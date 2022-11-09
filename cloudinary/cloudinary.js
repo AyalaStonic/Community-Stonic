@@ -15,7 +15,13 @@ cloudinary.config({
 // configure the cloudinary storage, only accepts jpg and png files
 const storage = cloudinaryStorage({
     cloudinary: cloudinary,
-    folder: "VolunTeam",
+    folder: "",
     allowedFormats: ["jpg", "png"],
     transformation: [{ width: 1000, height: 500, crop: "limit" }]
 });
+
+// sets multers upload to the cloudinary storage
+const parser = multer({ storage: storage });
+
+// export the configured parser
+module.exports = parser;
