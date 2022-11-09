@@ -76,3 +76,11 @@ router.post("/event", parser.single("image"), function (req, res) {
         .catch(err => console.log(err))
 
 });
+
+// updating an existing event
+router.put("/event/:id", parser.single("image"), function (req, res) {
+    db.Events.findById(req.params.id)
+        .then(event => {
+            // stores current event image id to use for deletion
+            const id = event.image.id;
+            let image = {};
