@@ -71,3 +71,11 @@ router.get("/user/:id", (req, res) => {
         .then(user => res.json(user))
         .catch(err => res.json(err))
 });
+
+// put route to update user information
+router.put("/user/:id", parser.single("image"), (req, res) => {
+    db.Users.findById(req.params.id)
+        .then(user => {
+            // stores current user image id to use for deletion
+            const id = user.image.id;
+            let image = {};
