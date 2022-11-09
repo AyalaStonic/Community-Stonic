@@ -79,3 +79,15 @@ router.put("/user/:id", parser.single("image"), (req, res) => {
             // stores current user image id to use for deletion
             const id = user.image.id;
             let image = {};
+
+            // if the user is uploading a new image, set the image object properties to the new image
+            if (req.file) {
+                console.log(req.file);
+                image.url = req.file.url;
+                image.id = req.file.public_id;
+                // takes the old stored image id and deletes it from cloudinary storage
+                if (id) {
+                    cloudinary.v2.uploader.destroy(id, (err, res) => {
+                        if(err) console.log(err);
+                        console.log("This is the response:" + res)
+                    });
