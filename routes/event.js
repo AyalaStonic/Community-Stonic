@@ -144,3 +144,17 @@ router.delete("/event/:id", parser.single("image"), function (req, res) {
 // adding a user to an existing event via Attendees array field in Mongodb
 router.put("/signup/:id", function (req, res) {
     let id = req.params.id;
+
+    console.log(`id for event is ${id}, userID is ${req.body.userID}`)
+    db.Events.findByIdAndUpdate(id,
+        {
+            $addToSet: { attendees: req.body.userID }
+        }).then(dbEvent => {
+            return db.Users.findByIdAndUpdate(req.body.userID,
+                { $addToSet: { events: id } },
+                { new: true })
+        })
+        .then((response) => {
+            res.json(response);
+        }).catch(err => res.status(422).json(err));
+});
