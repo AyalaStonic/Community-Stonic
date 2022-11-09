@@ -101,3 +101,23 @@ router.put("/event/:id", parser.single("image"), function (req, res) {
             } else {
                 image = event.image;
                 console.log(image);
+
+            }
+            db.Events.findByIdAndUpdate(event._id,
+                {
+                 
+                    $set: {
+                        name: req.body.name,
+                        address: req.body.address,
+                        date: req.body.date,
+                        time: req.body.time,
+                        description: req.body.description,
+                        image: image
+                    }
+                }, { new: true })
+                .then(updatedEvent => {
+                    res.json(updatedEvent)
+                })
+        })
+        .catch(err => res.json(err));
+});
