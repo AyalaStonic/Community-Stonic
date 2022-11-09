@@ -10,4 +10,12 @@ cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET
-}).
+});
+
+// configure the cloudinary storage, only accepts jpg and png files
+const storage = cloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: "VolunTeam",
+    allowedFormats: ["jpg", "png"],
+    transformation: [{ width: 1000, height: 500, crop: "limit" }]
+});
