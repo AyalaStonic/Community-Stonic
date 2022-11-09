@@ -32,3 +32,33 @@ router.post("/user", parser.single("image"), (req, res) => {
     newUser.image = image;
 
 });
+
+  // checks to see if a username or email already exists, if not creates new user
+  db.Users.findOne({ username: newUser.username }, (err, user) => {
+    if (err) {
+        console.log('User.js post error: ', err)
+    } else if (user) {
+        res.json({
+            error: `Sorry, already a user with the username: ${newUser.username}`
+        });
+    } else if (user) {
+        res.json({
+            error: `Sorry, already a user with the username: ${req.body.username}`
+        });
+    }
+    else {
+        db.Users.findOne({ email: newUser.email }, (err, user) => {
+            if (err) {
+                console.log('User.js post error: ', err)
+            } else if (user) {
+                res.json({
+                    error: `Sorry, already a user with the email: ${newUser.email}`
+                })
+            } else {
+                db.Users.create(newUser)
+                    .then((response) => res.json(response))
+                    .catch(err => res.status(422).json(err));
+            }
+        });
+    }
+});
