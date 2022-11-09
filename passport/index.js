@@ -9,3 +9,19 @@ passport.serializeUser((user, done) => {
     console.log('---------');
     done(null, { _id: user._id });
 });
+
+
+// user object attaches to the request as req.user
+passport.deserializeUser((id, done) => {
+    console.log('DeserializeUser called');
+    db.Users.findOne(
+        { _id: id },
+        'username',
+        (err, user) => {
+            console.log('*** Deserialize user, user:');
+            console.log(user);
+            console.log('--------------');
+            done(null, user);
+        }
+    );
+});
