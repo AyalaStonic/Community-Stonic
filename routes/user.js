@@ -62,3 +62,12 @@ router.post("/user", parser.single("image"), (req, res) => {
         });
     }
 });
+
+
+// get route for a specific user by id
+router.get("/user/:id", (req, res) => {
+    console.log(`this is req.params.id ${req.params.id}`)
+    db.Users.find({ _id: req.params.id })
+        .then(user => res.json(user))
+        .catch(err => res.json(err))
+});
