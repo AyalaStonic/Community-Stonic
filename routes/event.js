@@ -158,3 +158,24 @@ router.put("/signup/:id", function (req, res) {
             res.json(response);
         }).catch(err => res.status(422).json(err));
 });
+
+router.get("/search", (req, res) => {
+    const query = req.query.q;
+    console.log("Query is " + query);
+    db.Events.find({ $text: { $search: query } })
+        .then(events => {
+            if (events.length > 0) {
+                if (events.length > 5) {
+                    let lastFive = events.slice(Math.max(events.length - 7, 1));
+                    res.json(lastFive);
+                }
+                else {
+                    res.json(events);
+                }
+            } else {
+                res.json("No events were found. Try another search.");
+            }
+
+        })
+        .catch(err => res.status(422).json(err));
+});
