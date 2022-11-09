@@ -21,3 +21,16 @@ mongoose.connect(
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+// We need to use sessions to keep track of our user's login status
+app.use(
+    session({
+      secret: "keyboard cat",
+      store: new MongoStore({
+        mongooseConnection: mongoose.connection
+      }),
+      resave: false,
+      saveUninitialized: false
+    })
+  );
