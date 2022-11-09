@@ -121,3 +121,7 @@ router.put("/event/:id", parser.single("image"), function (req, res) {
         })
         .catch(err => res.json(err));
 });
+
+// deleting an existing event
+router.delete("/event/:id", parser.single("image"), function (req, res) {
+    let id = req.params.id;
