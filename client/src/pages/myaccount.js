@@ -134,3 +134,51 @@ class MyAccount extends React.Component {
             this.changeUserDetails(this.state.userID, formData);
         }
     };
+
+
+    manageLogin = () => {
+        if (this.state.loggedIn === "true") {
+            localStorage.setItem("username", "");
+            localStorage.setItem("loggedIn", "false");
+            localStorage.setItem("userID", "");
+            localStorage.setItem("userImage", "");
+            this.setState({ username: "", loggedIn: "false", userID: "" });
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <Nav
+                    loggedIn={this.state.loggedIn}
+                    manageLogin={this.manageLogin}
+                    href={this.state.href}>
+                </Nav>
+                <MyAccountComponent
+                    firstname={this.state.firstname}
+                    lastname={this.state.lastname}
+                    username={this.state.username}
+                    email={this.state.email}
+                    image={this.state.image}
+
+                    handleInputChange={this.handleInputChange}
+
+                    handleFormSubmit={this.handleFormSubmit}
+
+                    setImage={this.setImage}
+                />
+                <OurModal
+                    visible={this.state.visible}
+                    open={this.openModal}
+                    close={this.closeModal}
+                    messageheader="One or more input fields is missing."
+                    message="Please complete all fields, then try again."
+                    color="orangered">
+                </OurModal>
+
+            </div>
+        )
+    }
+}
+
+export default MyAccount;
