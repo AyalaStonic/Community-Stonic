@@ -64,3 +64,73 @@ class MyAccount extends React.Component {
                 console.log(error);
             });
     }
+
+    componentDidMount() {
+        // found that callback was needed after setting State in order to use function to lookup user using state (async issue solved)
+        this.setState({ userID: localStorage.getItem("userID") }, () => {
+            this.getUserDetails(this.state.userID)});
+    }
+
+    openModal = () => {
+        this.setState({
+            visible: true
+        });
+    }
+
+    closeModal = () => {
+        this.setState({
+            visible: false
+        });
+    }
+
+    setImage = event => {
+        this.setState({ newimage: event.target.files[0] })
+    }
+
+    handleInputChange = event => {
+
+        const name = event.target.name;
+        let value = event.target.value;
+
+        this.setState({
+            [name]: value
+        });
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+
+        let arrayWithNewData = [
+            this.state.newfirstname,
+            this.state.newlastname,
+            this.state.newpassword,
+            this.state.newemail,
+        ];
+
+        let missingData = false;
+
+        for (let i = 0; i < arrayWithNewData.length; i++) {
+            if (missingData === true) {
+                break;
+            }
+            else {
+                if (!arrayWithNewData[i]) {
+                    missingData = true;
+                }
+            }
+        }
+
+        if (missingData === true) {
+            this.openModal();
+        }
+        else {
+            let formData = new FormData();
+            formData.append("firstname", this.state.newfirstname);
+            formData.append("lastname", this.state.newlastname);
+            formData.append("password", this.state.newpassword);
+            formData.append("email", this.state.newemail);
+            formData.append("image", this.state.newimage);
+
+            this.changeUserDetails(this.state.userID, formData);
+        }
+    };
