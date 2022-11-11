@@ -74,3 +74,33 @@ class Login extends React.Component {
             this.setState({username: "", loggedIn: "false", userID: ""});
         }
     }
+
+    render() {
+        return (
+            <div>
+                <Nav
+                    loggedIn={this.state.loggedIn}
+                    manageLogin={this.manageLogin}
+                    href={this.state.href}>
+                </Nav>
+                <LogInPageComponent
+                handleInputChange={this.handleInputChange}
+                login={this.login}
+                bypassLogin={this.bypassLogin}
+                handleFormSubmit={this.handleFormSubmit}>
+                </LogInPageComponent>
+                <OurModal
+                visible={this.state.visible}
+                open={this.openModal}
+                close={this.closeModal}
+                messageheader="Incorrect Login Info"
+                message="Either your username or password is incorrect.  Please try again."
+                color="orangered">
+                </OurModal>
+            </div>
+        )
+    }
+}
+
+export default Login;
+
