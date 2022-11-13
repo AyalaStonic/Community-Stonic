@@ -11,9 +11,9 @@ function CreateEventForm(props) {
                             <form className="col s12">
                                 <div className="row">
                                     <div className="col s12">
-                                        <span className="card-title" style={{ fontSize: "3rem" }}>Create Event</span>
+                                        <span className="card-title" style={{ fontSize: "3rem" }}>Create your community</span>
                                         <div className="card-image">
-                                            <img src="https://raw.github.com/ajperkins92/Project-3/master/client/public/images/seattlePark3.jpg" style={{ width: '90%' }}></img>
+                                            <img src="https://user-images.githubusercontent.com/106893616/201538628-11b1b006-8e03-4558-97a6-f8ba12b9535d.jpg" style={{ width: '90%' }}></img>
                                         </div>
                                         <div className="card-content">
                                             <div className="input-field col s12">
@@ -60,17 +60,11 @@ function CreateEventForm(props) {
                                             <div className="row fileInput">
                                                 <div className="col s12">
                                                     <form action="#">
-                                                        <div className="file-field input-field">
-                                                            <div className="badge blue">
-                                                                <span id="upload">Upload Event Picture</span>
-                                                                <input type="file" name="image" onChange={props.setImage} ></input>
-                                                            </div>
-                                                            <input className="file-path validate" type="text"></input>
-                                                        </div>
+
                                                     </form>
                                                 </div>
                                             </div>
-                                            <a className="waves-effect waves-light btn purple pulse" id="createEvent" onClick={props.handleFormSubmit}>Create Event</a>
+                                            <a className="waves-effect waves-light btn purple pulse" id="createEvent" onClick={props.handleFormSubmit}>Create your community</a>
                                         </div>
                                     </div>
                                 </div>
