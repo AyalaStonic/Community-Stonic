@@ -10,7 +10,7 @@ function CreateCard(props) {
           <img
             style={{height: "200px"}}
             className="activator"
-            src="https://media.giphy.com/media/xUA7b4arnbo3THfzi0/giphy.gif"
+            src="https://media.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.gif?cid=ecf05e47kw19o1t8pie8pb4q0hvo8vugk5l8p5kjxiygfwrk&rid=giphy.gif&ct=g"
           ></img>
         </div>
         <div className="card-content">
