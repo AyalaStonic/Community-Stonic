@@ -11,7 +11,7 @@ function CreateEventForm(props) {
                             <form className="col s12">
                                 <div className="row">
                                     <div className="col s12">
-                                        <span className="card-title" style={{ fontSize: "3rem" }}>Create your community</span>
+                                        <span className="card-title" style={{ fontSize: "3rem" }}>build your community</span>
                                         <div className="card-image">
                                             <img src="https://user-images.githubusercontent.com/106893616/201538628-11b1b006-8e03-4558-97a6-f8ba12b9535d.jpg" style={{ width: '90%' }}></img>
                                         </div>
@@ -64,7 +64,7 @@ function CreateEventForm(props) {
                                                     </form>
                                                 </div>
                                             </div>
-                                            <a className="waves-effect waves-light btn grey" id="createEvent" onClick={props.handleFormSubmit}>Create your community</a>
+                                            <a className="waves-effect waves-light btn grey" id="createEvent" onClick={props.handleFormSubmit}>build your community</a>
                                         </div>
                                     </div>
                                 </div>
