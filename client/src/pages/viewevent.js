@@ -17,7 +17,6 @@ class ViewEventAsIs extends React.Component {
         userimage: localStorage.getItem("userImage"),
     }
 
-
     getEventData = (eventID) => {
         axios.get(`/event/${eventID}`)
             .then((response) => {
@@ -100,7 +99,6 @@ class ViewEventAsIs extends React.Component {
                 console.log(error);
             });
     }
-
 
     changeEventDetails = (eventID, changes) => {
         axios.put(`/event/${eventID}`, changes)
@@ -210,4 +208,3 @@ class ViewEventAsIs extends React.Component {
 const ViewEvent = withRouter(ViewEventAsIs);
 
 export default ViewEvent;
-

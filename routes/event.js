@@ -5,8 +5,12 @@ var nodemailer = require('nodemailer');
 const parser = require("../cloudinary/cloudinary");
 const cloudinary = require("cloudinary");
 
+// home page route showing the last 5 events (as the last 5 events to be entered into the db)
 router.get("/event", function (req, res) {
     db.Events.find({}).then((response) => {
+        // response is an array, so I'm slicing off the last 5 items (slice takes a start and end, here' we are just finding the 
+        // "start", which is to be the array length minus 5.  
+        // and with the slice method, if there is no end given, it defaults "end" to be the end of the array")
 
         console.log(response);
         console.log("showing events");
@@ -20,7 +24,6 @@ router.get("/event", function (req, res) {
     });
 });
 
-
 // route for getting event information to display on event page
 router.get("/event/:id", function (req, res) {
     let id = req.params.id
@@ -33,12 +36,12 @@ router.get("/event/:id", function (req, res) {
         });
 });
 
+
 // creating a new event
 router.post("/event", parser.single("image"), function (req, res) {
     console.log("event POST request received");
     let newEvent = {};
     let image = {};
-
 
     if (req.file) {
         image.url = req.file.url;
@@ -101,11 +104,12 @@ router.put("/event/:id", parser.single("image"), function (req, res) {
             } else {
                 image = event.image;
                 console.log(image);
-
             }
             db.Events.findByIdAndUpdate(event._id,
                 {
-                 
+                    // we assume that all the fields can be updated EXCEPT organizer, so we need the req.body to contain all of those fields.
+                    // We should prepopulate the fields with the information already relevant to the event, so that if a field is not updated,
+                    // it stays as the old value
                     $set: {
                         name: req.body.name,
                         address: req.body.address,
@@ -125,26 +129,29 @@ router.put("/event/:id", parser.single("image"), function (req, res) {
 // deleting an existing event
 router.delete("/event/:id", parser.single("image"), function (req, res) {
     let id = req.params.id;
-
+    // ** NEED TO SEND USERID FOR THIS ROUTE
+    // User ID needs to be supplied from client side
     db.Events.findByIdAndDelete(id)
-    .then(event => {
-        cloudinary.v2.uploader.destroy(event.image.id, (err, res) => {
-            if (err) console.log(err);
-            console.log("This is the response:" + res);
-        });
-        db.Users.findByIdAndUpdate(req.body.userID,
-            { $pullAll: { events: [id] } })
-            .then(response => {
-                res.json(`${id} has been deleted`);
-            })
-    })
-    .catch(err => res.status(422).json(err));
+        .then(event => {
+            cloudinary.v2.uploader.destroy(event.image.id, (err, res) => {
+                if (err) console.log(err);
+                console.log("This is the response:" + res);
+            });
+            db.Users.findByIdAndUpdate(req.body.userID,
+                { $pullAll: { events: [id] } })
+                .then(response => {
+                    res.json(`${id} has been deleted`);
+                })
+        })
+        .catch(err => res.status(422).json(err));
 });
+
 
 // adding a user to an existing event via Attendees array field in Mongodb
 router.put("/signup/:id", function (req, res) {
     let id = req.params.id;
-
+    // ** NEED TO SEND USERID FOR THIS ROUTE
+    // User ID needs to be supplied from client side
     console.log(`id for event is ${id}, userID is ${req.body.userID}`)
     db.Events.findByIdAndUpdate(id,
         {
@@ -158,6 +165,7 @@ router.put("/signup/:id", function (req, res) {
             res.json(response);
         }).catch(err => res.status(422).json(err));
 });
+
 
 router.get("/search", (req, res) => {
     const query = req.query.q;

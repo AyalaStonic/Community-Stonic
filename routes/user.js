@@ -31,38 +31,36 @@ router.post("/user", parser.single("image"), (req, res) => {
     newUser.email = req.body.email;
     newUser.image = image;
 
+    // checks to see if a username or email already exists, if not creates new user
+    db.Users.findOne({ username: newUser.username }, (err, user) => {
+        if (err) {
+            console.log('User.js post error: ', err)
+        } else if (user) {
+            res.json({
+                error: `Sorry, already a user with the username: ${newUser.username}`
+            });
+        } else if (user) {
+            res.json({
+                error: `Sorry, already a user with the username: ${req.body.username}`
+            });
+        }
+        else {
+            db.Users.findOne({ email: newUser.email }, (err, user) => {
+                if (err) {
+                    console.log('User.js post error: ', err)
+                } else if (user) {
+                    res.json({
+                        error: `Sorry, already a user with the email: ${newUser.email}`
+                    })
+                } else {
+                    db.Users.create(newUser)
+                        .then((response) => res.json(response))
+                        .catch(err => res.status(422).json(err));
+                }
+            });
+        }
+    });
 });
-
-  // checks to see if a username or email already exists, if not creates new user
-  db.Users.findOne({ username: newUser.username }, (err, user) => {
-    if (err) {
-        console.log('User.js post error: ', err)
-    } else if (user) {
-        res.json({
-            error: `Sorry, already a user with the username: ${newUser.username}`
-        });
-    } else if (user) {
-        res.json({
-            error: `Sorry, already a user with the username: ${req.body.username}`
-        });
-    }
-    else {
-        db.Users.findOne({ email: newUser.email }, (err, user) => {
-            if (err) {
-                console.log('User.js post error: ', err)
-            } else if (user) {
-                res.json({
-                    error: `Sorry, already a user with the email: ${newUser.email}`
-                })
-            } else {
-                db.Users.create(newUser)
-                    .then((response) => res.json(response))
-                    .catch(err => res.status(422).json(err));
-            }
-        });
-    }
-});
-
 
 // get route for a specific user by id
 router.get("/user/:id", (req, res) => {
@@ -91,7 +89,6 @@ router.put("/user/:id", parser.single("image"), (req, res) => {
                         if(err) console.log(err);
                         console.log("This is the response:" + res)
                     });
-
                 }
                 // if user is not uploading a new image then set new image object to the current image object
             } else {
@@ -150,4 +147,7 @@ router.post('/logout', (req, res) => {
     }
 })
 
+
 module.exports = router
+
+

@@ -4,6 +4,8 @@ const db = require("../model/index");
 const userRoutes = require("./user");
 const eventRoutes = require("./event")
 
+// router.use("/user", require("./user"));
+
 router.use(userRoutes);
 
 router.use(eventRoutes);

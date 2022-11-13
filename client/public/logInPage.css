@@ -3,14 +3,6 @@
     margin-top: 10px;
     max-width: 50%;
   }
-  
-  .file-path {
-    max-width: 50%;
-  }
-  #upload {
-    color: white;
-    
-  }
   img {
     margin: 0 auto;
   }
@@ -19,6 +11,12 @@
     max-width: 50%;
     border-radius: 4px;
   }
-  .btn {
-      border-radius: 1.3rem;
+  .file-path {
+    max-width: 50%;
   }
+  #upload {
+    color: white;
+  }
+  .btn {
+    border-radius: 1.5rem;
+}

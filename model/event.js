@@ -42,6 +42,7 @@ var EventSchema = new Schema({
             required: false
         }
     },
+
     organizer: {
         type: String,
         required: true

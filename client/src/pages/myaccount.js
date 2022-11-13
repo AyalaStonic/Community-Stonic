@@ -135,7 +135,6 @@ class MyAccount extends React.Component {
         }
     };
 
-
     manageLogin = () => {
         if (this.state.loggedIn === "true") {
             localStorage.setItem("username", "");

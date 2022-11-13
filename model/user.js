@@ -50,6 +50,7 @@ var UsersSchema = new Schema({
         ref: "Events"
     }]
 
+
 });
 
 UsersSchema.methods = {
