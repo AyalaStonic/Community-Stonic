@@ -12,7 +12,7 @@ function LogInPageComponent(props) {
                                     <div className="col s12">
                                         <span className="card-title" style={{ fontSize: "3rem" }}>Log In</span>
                                         <div className="card-image">
-                                            <img src={"https://raw.github.com/ajperkins92/Project-3/master/client/public/images/seattlePark2.jpg"} style={{ width: "100%" }} />
+                                            <img src={"https://media.giphy.com/media/mL2btWhzx5JSMm2lPx/giphy.gif?cid=ecf05e47ou1lko3wjra2gowkae7jw2cyato2dd3bk7osd8n8&rid=giphy.gif&ct=g"} style={{ width: "300px"}} />
                                         </div>
                                         <br />
                                         <div className="card-content">
@@ -38,7 +38,7 @@ function LogInPageComponent(props) {
                                                     <label htmlFor="password">Password</label>
                                                 </div>
                                             </div>
-                                            <a className="waves-effect waves-light btn black pulse" id="login" onClick={props.handleFormSubmit}>Log In</a>
+                                            <a className="waves-effect waves-light btn green pulse" id="login" onClick={props.handleFormSubmit}>Log In</a>
     <br></br><br></br>
                                         </div>
                                     </div>

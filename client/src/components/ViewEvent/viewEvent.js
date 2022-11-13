@@ -32,7 +32,7 @@ function ViewEventComponent(props) {
                       <img
                         src={
                           (props.image) ? props.image :
-                            "https://raw.github.com/ajperkins92/Project-3/master/client/public/images/seattlePark2.jpg"
+                            "https://media.giphy.com/media/mL2btWhzx5JSMm2lPx/giphy.gif?cid=ecf05e47ou1lko3wjra2gowkae7jw2cyato2dd3bk7osd8n8&rid=giphy.gif&ct=g"
                         }
                         style={{ maxWidth: "100%" }}
                       />
@@ -225,7 +225,7 @@ function ViewEventComponent(props) {
                         )}
 
                       <a
-                        className="waves-effect waves-light btn black pulse"
+                        className="waves-effect waves-light btn green pulse"
                         id="attend"
                         onClick={() =>
                           props.attend(props.userID, props.eventID)

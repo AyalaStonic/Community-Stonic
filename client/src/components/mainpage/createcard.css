@@ -3,12 +3,12 @@
     border: 1px solid black;
     width: 18rem;
     height: 25rem;
-    border-radius: 7rem;
+    border-radius: 5rem;
 }
 
 .card-image {
     position: relative;
-    border-radius: 7rem;
+    border-radius: 5rem;
 }
 
 .image-container {

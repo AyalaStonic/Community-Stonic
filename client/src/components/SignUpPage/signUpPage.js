@@ -13,7 +13,7 @@ function SignUpPage(props) {
                                     <div className="col s12">
                                         <span className="card-title" style={{ fontSize: "3rem" }}>Sign Up</span>
                                         <div className="card-image">
-                                            <img src={"https://raw.github.com/ajperkins92/Project-3/master/client/public/images/seattlePark2.jpg"} style={{ width: "100%" }} />
+                                            <img src={"https://media.giphy.com/media/L0NMIdSpGAvX6pcyLQ/giphy.gif?cid=ecf05e47uahoof7jtaktnaisv90eb3ig699wmf7n2p9s37sr&rid=giphy.gif&ct=g"} style={{ width: "100%" }} />
                                         </div>
                                         <div className="card-content">
                                             <div className="row">
