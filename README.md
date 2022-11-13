@@ -10,9 +10,5 @@
 - Moment
 - Nodemailer
 
-## Team:
-- Alex Perkins
-- Eric Choi
-- Kensen Hirohata
-- Tyler Shuck
-
+## Created by:
+- Duvan Ayala
