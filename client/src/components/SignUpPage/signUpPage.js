@@ -73,7 +73,7 @@ function SignUpPage(props) {
                                                     </form>
                                                 </div>
                                             </div>
-                                            <a className="waves-effect waves-light btn orange pulse" id="signup" onClick={props.handleFormSubmit}>Sign Up</a>
+                                            <a className="waves-effect waves-light btn orange" id="signup" onClick={props.handleFormSubmit}>Sign Up</a>
                                         </div>
                                     </div>
                                 </div>

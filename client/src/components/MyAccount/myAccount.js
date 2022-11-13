@@ -75,7 +75,7 @@ function MyAccountComponent(props) {
 
                                                 </div>
                                             </div>
-                                            <a className="waves-effect waves-light btn pink pulse" id="updateAccount" onClick={props.handleFormSubmit}>Update</a>
+                                            <a className="waves-effect waves-light btn pink" id="updateAccount" onClick={props.handleFormSubmit}>Update</a>
                                         </div>
 
                                     </div>

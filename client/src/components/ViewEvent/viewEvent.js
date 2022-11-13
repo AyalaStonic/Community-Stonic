@@ -32,7 +32,7 @@ function ViewEventComponent(props) {
                       <img
                         src={
                           (props.image) ? props.image :
-                            "https://media.giphy.com/media/mL2btWhzx5JSMm2lPx/giphy.gif?cid=ecf05e47ou1lko3wjra2gowkae7jw2cyato2dd3bk7osd8n8&rid=giphy.gif&ct=g"
+                            "https://media.giphy.com/media/IOywT9BgZYs8vBfVVw/giphy.gif?cid=ecf05e47cvzrmx4mhaurp66zxhy0obpos4dp912fgq5dlux1&rid=giphy.gif&ct=g"
                         }
                         style={{ maxWidth: "100%" }}
                       />
@@ -225,7 +225,7 @@ function ViewEventComponent(props) {
                         )}
 
                       <a
-                        className="waves-effect waves-light btn green pulse"
+                        className="waves-effect waves-light btn green"
                         id="attend"
                         onClick={() =>
                           props.attend(props.userID, props.eventID)
@@ -277,7 +277,7 @@ function ViewEventComponent(props) {
                               <div>
 
                                 <a
-                                  className="waves-effect waves-light btn cyan pulse"
+                                  className="waves-effect waves-light btn cyan"
                                   id="attend"
                                   onClick={() => props.edit()}
                                 >

@@ -22,7 +22,7 @@ function CreateEventForm(props) {
                                                     onChange={props.handleInputChange}
                                                 ></input>
 
-                                                <label htmlFor="event_name">Event Name</label>
+                                                <label htmlFor="event_name">Community Name</label>
                                             </div>
 
                                             <div className="input-field col s12">
@@ -64,7 +64,7 @@ function CreateEventForm(props) {
                                                     </form>
                                                 </div>
                                             </div>
-                                            <a className="waves-effect waves-light btn purple pulse" id="createEvent" onClick={props.handleFormSubmit}>Create your community</a>
+                                            <a className="waves-effect waves-light btn grey" id="createEvent" onClick={props.handleFormSubmit}>Create your community</a>
                                         </div>
                                     </div>
                                 </div>
