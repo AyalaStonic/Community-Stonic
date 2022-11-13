@@ -5,14 +5,7 @@ const cloudinaryStorage = require("multer-storage-cloudinary");
 const dotenv = require('dotenv');
 dotenv.config()
 
-// load in cloudinary environment variables
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
-});
-
-// configure the cloudinary storage, only accepts jpg and png files
+// configure the cloudinary storage
 const storage = cloudinaryStorage({
     cloudinary: cloudinary,
     folder: "CommunityStonic",
@@ -20,8 +13,17 @@ const storage = cloudinaryStorage({
     transformation: [{ width: 1000, height: 500, crop: "limit" }]
 });
 
-// sets multers upload to the cloudinary storage
+
 const parser = multer({ storage: storage });
+
+// load in cloudinary environment variables
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
+
+
 
 // export the configured parser
 module.exports = parser;

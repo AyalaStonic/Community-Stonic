@@ -11,7 +11,7 @@ function SearchBar(props) {
             <div className="col s1 m2 l3 xl4"></div>
             <div className="input-field search-input-field col s10 m8 l6 xl4">
 
-                <input placeholder="Search events " id="zipCodeSearch" type="text" className="validate" name="searchquery"
+                <input placeholder="Search" id="zipCodeSearch" type="text" className="validate" name="searchquery"
 
                 onChange={props.handleInputChange}
                 value={props.value}

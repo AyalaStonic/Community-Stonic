@@ -15,7 +15,7 @@ function CreateCard(props) {
         </div>
         <div className="card-content">
           <span className="card-title activator grey-text text-darken-4">
-            <b>build your community</b><i className="material-icons right">add_circle_outline
+            <b>Build It!!</b><i className="material-icons right">add_circle_outline
 </i>
           </span>
           <p>
