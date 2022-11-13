@@ -63,13 +63,7 @@ function SignUpPage(props) {
                                             <div className="row fileInput">
                                                 <div className="col s12">
                                                     <form action="#">
-                                                        <div className="file-field input-field">
-                                                            <div className="badge blue">
-                                                                <span id="upload">Upload Profile Picture</span>
-                                                                <input type="file" name="image" onChange={props.setImage} ></input>
-                                                            </div>
-                                                            <input className="file-path validate" type="text"></input>
-                                                        </div>
+                                                        
                                                     </form>
                                                 </div>
                                             </div>

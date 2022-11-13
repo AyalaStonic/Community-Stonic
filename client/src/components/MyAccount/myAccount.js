@@ -65,13 +65,7 @@ function MyAccountComponent(props) {
 
                                             <div className="row fileInput">
                                                 <div className="col s12">
-                                                    <div className="file-field input-field">
-                                                        <div className="badge blue">
-                                                            <span id="upload">Upload Profile Picture</span>
-                                                            <input type="file" onChange={props.setImage}/>
-                                                        </div>
-                                                        <input className="file-path validate" type="text" />
-                                                    </div>
+                                                   
 
                                                 </div>
                                             </div>
