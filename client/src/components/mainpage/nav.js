@@ -17,7 +17,7 @@ function Nav(props) {
                     <Link to={(props.loggedIn === "true") ? "/" : "/loginpage"}>
                         {(props.loggedIn === "true") ? "Log Out" : "Log In"}</Link>
                     </li>
-                    <li className={(props.loggedIn === "true") ? "hiddenForNav" : ""}><Link to="/signup">Sign Up!</Link></li>
+                    <li className={(props.loggedIn === "true") ? "hiddenForNav" : ""}><Link to="/signup">Sign Up</Link></li>
                     <li className={(props.loggedIn === "true") ? "" : "hiddenForNav"}><Link to="/myevents">My Events</Link></li>
                     <li className={(props.loggedIn === "true") ? "" : "hiddenForNav"}><Link to="/myaccount">My Account</Link></li>
                 </ul>
