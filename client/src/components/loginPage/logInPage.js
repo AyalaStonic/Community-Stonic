@@ -38,7 +38,7 @@ function LogInPageComponent(props) {
                                                     <label htmlFor="password">Password</label>
                                                 </div>
                                             </div>
-                                            <a className="waves-effect waves-light btn green pulse" id="login" onClick={props.handleFormSubmit}>Log In</a>
+                                            <a className="waves-effect waves-light btn black pulse" id="login" onClick={props.handleFormSubmit}>Log In</a>
     <br></br><br></br>
                                         </div>
                                     </div>

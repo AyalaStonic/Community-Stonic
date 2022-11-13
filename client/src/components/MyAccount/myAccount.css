@@ -18,5 +18,8 @@ img {
   color: white;
 }
 .btn {
-  border-radius: 1.5rem;
+  margin: 0;
+  position: absolute;
+  top: 55%;
+  left: 37%;
 }

@@ -225,7 +225,7 @@ function ViewEventComponent(props) {
                         )}
 
                       <a
-                        className="waves-effect waves-light btn green pulse"
+                        className="waves-effect waves-light btn black pulse"
                         id="attend"
                         onClick={() =>
                           props.attend(props.userID, props.eventID)
